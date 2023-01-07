@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
+import DefaultLayout from './layout/default';
+import Market from './pages/market';
+import MarketSocket from './pages/market_socket';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+      <DefaultLayout>
+        <BrowserRouter>
+          <Routes>
+            <Route 
+              path='/market/:id' 
+              element={<Market/>} 
+            />
+            <Route 
+              path='/market_socket/:id' 
+              element={<MarketSocket/>} 
+            />
+          </Routes>
+        </BrowserRouter>
+
+      </DefaultLayout>
+
     </div>
   );
 }
