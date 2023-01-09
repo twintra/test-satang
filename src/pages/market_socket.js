@@ -24,20 +24,20 @@ const MarketSocket = (props) => {
         },
     ]
 
-    const [storeValue, setStoreValue] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [socketData, setSocketData] = useState([])
 
     useEffect(() => {
-        console.log("ID changed", id);
+        // console.log("ID changed", id);
         socket = new WebSocket(socket_uri);
+        setIsLoading(true)
         socket.addEventListener("open", (e) => {
-            console.log("socket Opened", e);
+            setIsLoading(false);
             // socket.send("Hello!")
 
         })
         socket.addEventListener("close", (e) => {
-            console.log("socket closed", e);
+            // console.log("socket closed", e);
         })
         socket.addEventListener("message", (e)=> {
             if(!e.data) return

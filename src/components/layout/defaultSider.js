@@ -47,8 +47,8 @@ const DefaultSider = (props) => {
 
     useEffect(()=>{
         const pathname = window.location.pathname.split("/");
-        console.log(pathname);
         const target = menus.find(value=> pathname.findIndex(v =>v===value.href) !== -1)
+        if(!target) return;
         setCurrentMenu(target.key)
     },[])
 
